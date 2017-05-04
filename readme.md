@@ -22,34 +22,32 @@ import dfs from 'depth-first';
 
 // First, we define our edges.
 const edges = [
-  ['tie your shoes', 'put on your shoes'],
-  ['put on your jacket', 'put on your shirt'],
-  ['put on your shoes', 'put on your shorts'],
-  ['put on your jacket', 'put on your shorts'],
+  ['put on your shoes', 'tie your shoes'],
+  ['put on your shirt', 'put on your jacket'],
+  ['put on your shorts', 'put on your jacket'],
+  ['put on your shorts', 'put on your shoes'],
 ]
 
 // Now, list the vertices that can be reached from 'put on your shirt'
-dfs(edges, 'tie your shoes');
-/* →
+dfs(edges, 'put on your shirt');
+/* =>
 [
-  'tie your shoes',
-  'put on your shoes',
-  'put on your shorts'
+  'put on your shirt',
+  'put on your jacket',
 ]
 */
 ```
 
 ### Reverse edges
 ```js
-// Now, list the vertices that can be from reached 'put on your shirt'
+// Now, list the vertices that can be from reached 'put on your jacket'
 // when the edges are reversed
-dfs(edges, 'put on your shorts', { reverse: true });
+dfs(edges, 'put on your jacket', { reverse: true });
 /* →
 [
-  'put on your shorts',
-  'put on your shoes',
-  'tie your shoes',
   'put on your jacket',
+  'put on your shirt',
+  'put on your shorts',
 ]
 */
 ```
