@@ -44,3 +44,27 @@ it('can be reversed', async () => {
     'tie your shoes',
   ].sort());
 });
+
+it('supports arrays', async () => {
+  const edges = [
+    ['put on your shoes', 'tie your shoes'],
+    ['put on your shirt', 'put on your jacket'],
+    ['put on your shorts', 'put on your jacket'],
+    ['put on your shorts', 'put on your shoes'],
+  ];
+  const nodes = [
+    'put on your shorts',
+    'put on your shoes',
+    'tie your shoes',
+    'put on your jacket',
+    'listen to audiobook', // new, and disconnected!
+  ];
+  expect(dfs.array(edges, nodes, 'listen to audiobook', { reverse: true }).sort()).toEqual([
+    'listen to audiobook',
+  ].sort());
+
+  expect(dfs.array(edges, nodes, 'put on your shirt', { reverse: true }).sort()).toEqual([
+    'put on your shirt',
+    'put on your jacket',
+  ].sort());
+});
