@@ -1,0 +1,57 @@
+{
+  "name": "depth-first",
+  "description": "Depth first search directed graphs",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Sigurd Fosseng",
+    "email": "sigurd@fosseng.net",
+    "url": "http://laat.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/laat/depth-first.git"
+  },
+  "scripts": {
+    "prebuild:flow": "mkdirp dist",
+    "build:flow": "flow-copy-source -v -i '**/*test.js' src dist",
+    "build:js": "BABEL_ENV=node babel src -d dist --ignore '*test.js'",
+    "build": "run-s build:*",
+    "test:readme": "readme-assert -p --require babel-register --main ./src/index.js",
+    "test:js": "jest",
+    "test": "run-s test:*",
+    "lint:eslint": "eslint src",
+    "lint:flow": "flow",
+    "lint": "run-s lint:*",
+    "prepublish": "npm run build"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-jest": "^19.0.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-preset-env": "^1.4.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.3",
+    "eslint-plugin-import": "^2.2.0",
+    "flow-bin": "^0.45.0",
+    "flow-copy-source": "^1.1.0",
+    "jest": "^19.0.2",
+    "mkdirp": "^0.5.1",
+    "npm-run-all": "^4.0.2",
+    "readme-assert": "^5.0.5",
+    "rimraf": "^2.6.1"
+  },
+  "keywords": [
+    "depth first search",
+    "dfs",
+    "graphs",
+    "graph",
+    "dependencies",
+    "directed graphs"
+  ],
+  "files": [
+    "dist"
+  ]
+}
