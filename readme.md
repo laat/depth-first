@@ -28,7 +28,7 @@ const edges = [
   ['put on your shorts', 'put on your shoes'],
 ]
 
-// Now, list the vertices that can be reached from 'put on your shirt'
+// Now, list the vertices that can be reached starting at 'put on your shirt'
 dfs(edges, 'put on your shirt');
 /* =>
 [
@@ -40,7 +40,7 @@ dfs(edges, 'put on your shirt');
 
 ### Reverse edges
 ```js
-// Now, list the vertices that can be from reached 'put on your jacket'
+// Now, list the vertices that can be reached starting at 'put on your jacket'
 // when the edges are reversed
 dfs(edges, 'put on your jacket', { reverse: true });
 /* →
