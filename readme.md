@@ -1,5 +1,5 @@
 # depth-first [![travis][travis-image]][travis-url] [![npm][npm-image]][npm-url]
-[travis-image]: https://img.shields.io/travis/laat/depth-first.svg?style=flat
+[travis-image]: https://img.shields.io/travis/laat/depth-first.svg?branch=master
 [travis-url]: https://travis-ci.org/laat/depth-first
 [npm-image]: https://img.shields.io/npm/v/depth-first.svg?style=flat
 [npm-url]: https://npmjs.org/package/depth-first
@@ -28,7 +28,7 @@ const edges = [
   ['put on your shorts', 'put on your shoes'],
 ]
 
-// Now, list the vertices that can be reached starting at 'put on your shirt'
+// List the vertices that can be reached starting at 'put on your shirt'
 dfs(edges, 'put on your shirt');
 /* =>
 [
@@ -40,10 +40,10 @@ dfs(edges, 'put on your shirt');
 
 ### Reverse edges
 ```js
-// Now, list the vertices that can be reached starting at 'put on your jacket'
-// when the edges are reversed
+// List the vertices that can be reached starting at 'put on your jacket' when
+// the edges are reversed
 dfs(edges, 'put on your jacket', { reverse: true });
-/* →
+/* =>
 [
   'put on your jacket',
   'put on your shirt',
@@ -54,7 +54,7 @@ dfs(edges, 'put on your jacket', { reverse: true });
 
 ### Forest
 
-This library also supports unconnected nodes through a convenience method
+This library also supports nodes without edges through a convenience method
 
 ```js
 const nodes = [
@@ -65,7 +65,7 @@ const nodes = [
   'listen to audiobook', // new, and disconnected!
 ]
 dfs.array(edges, nodes, 'listen to audiobook', { reverse: true });
-/* →
+/* =>
 [
   'listen to audiobook',
 ]
