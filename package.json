@@ -1,7 +1,7 @@
 {
   "name": "depth-first",
   "description": "Depth first search directed graphs",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/index.js",
   "license": "MIT",
   "author": {
