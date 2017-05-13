@@ -52,26 +52,6 @@ dfs(edges, 'put on your jacket', { reverse: true });
 */
 ```
 
-### Forest
-
-This library also supports nodes without edges through a convenience method
-
-```js
-const nodes = [
-  'put on your shorts',
-  'put on your shoes',
-  'tie your shoes',
-  'put on your jacket',
-  'listen to audiobook', // new, and disconnected!
-]
-dfs.array(edges, nodes, 'listen to audiobook', { reverse: true });
-/* =>
-[
-  'listen to audiobook',
-]
-*/
-```
-
 ## Inspired by
 
 This package uses the same data structure as [toposort](https://github.com/marcelklehr/toposort)

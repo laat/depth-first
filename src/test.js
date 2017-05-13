@@ -45,7 +45,7 @@ it('can be reversed', async () => {
   ].sort());
 });
 
-it('supports arrays', async () => {
+it('supports nodes without edges', async () => {
   const edges = [
     ['put on your shoes', 'tie your shoes'],
     ['put on your shirt', 'put on your jacket'],
@@ -59,11 +59,11 @@ it('supports arrays', async () => {
     'put on your jacket',
     'listen to audiobook', // new, and disconnected!
   ];
-  expect(dfs.array(edges, nodes, 'listen to audiobook', { reverse: true }).sort()).toEqual([
+  expect(dfs(edges, 'listen to audiobook', { reverse: true }).sort()).toEqual([
     'listen to audiobook',
   ].sort());
 
-  expect(dfs.array(edges, nodes, 'put on your shirt', { reverse: true }).sort()).toEqual([
+  expect(dfs(edges, 'put on your shirt', { reverse: true }).sort()).toEqual([
     'put on your shirt',
     'put on your jacket',
   ].sort());

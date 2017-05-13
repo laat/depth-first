@@ -20,18 +20,8 @@ export default function depthFirst<T>(
     });
   };
   dfs(node);
+  if (result.length === 0) {
+    result.push(node);
+  }
   return result;
 }
-
-depthFirst.array = function array<T>(
-  edges: Array<Array<T>>,
-  nodes: Array<T>,
-  node: T,
-  opts?: { reverse: boolean },
-): Array<T> {
-  const dfs = depthFirst(edges, node, opts);
-  if (dfs.length > 0) {
-    return dfs;
-  }
-  return nodes.filter(n => n === node);
-};
