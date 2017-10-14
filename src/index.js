@@ -20,8 +20,5 @@ export default function depthFirst<T>(
     });
   };
   dfs(node);
-  if (result.length === 0) {
-    result.push(node);
-  }
   return result;
 }
