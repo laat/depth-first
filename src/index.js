@@ -5,7 +5,8 @@ export default function depthFirst<T>(
   opts?: { reverse: boolean },
 ): Array<T> {
   const { reverse } = Object.assign({}, { reverse: false }, opts);
-  edges = reverse ? edges.map(([from, to]) => [to, from]) : edges; // eslint-disable-line no-param-reassign
+  // eslint-disable-next-line no-param-reassign
+  edges = reverse ? edges.map(([from, to]) => [to, from]) : edges;
   const result = [];
   const visited = new Map();
   const dfs = (v) => {
