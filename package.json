@@ -35,7 +35,7 @@
     "eslint": "5.13.0",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-plugin-import": "2.16.0",
-    "flow-bin": "0.92.0",
+    "flow-bin": "0.92.1",
     "flow-copy-source": "2.0.2",
     "jest": "23.6.0",
     "mkdirp": "0.5.1",
