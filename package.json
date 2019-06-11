@@ -14,11 +14,9 @@
     "url": "https://github.com/laat/depth-first.git"
   },
   "scripts": {
-    "prebuild:flow": "mkdirp dist",
-    "build:flow": "flow-copy-source -v -i '**/*test.js' src dist",
-    "build:js": "BABEL_ENV=node babel src -d dist --ignore '*test.js'",
-    "build": "run-s build:*",
-    "test:readme": "readme-assert -p --require babel-register --main ./src/index.js",
+    "prebuild": "rimraf dist",
+    "build": "tsc",
+    "test:readme": "readme-assert -p --require ts-node/register --main ./src/index.ts",
     "test:js": "jest",
     "test": "run-s test:*",
     "lint:eslint": "eslint src",
@@ -27,21 +25,15 @@
     "prepublish": "npm run build"
   },
   "devDependencies": {
-    "babel-cli": "6.26.0",
-    "babel-eslint": "10.0.1",
-    "babel-jest": "23.6.0",
-    "babel-plugin-transform-flow-strip-types": "6.22.0",
-    "babel-preset-env": "1.7.0",
-    "eslint": "5.16.0",
-    "eslint-config-airbnb-base": "13.1.0",
-    "eslint-plugin-import": "2.17.3",
-    "flow-bin": "0.101.0",
-    "flow-copy-source": "2.0.6",
-    "jest": "23.6.0",
+    "@types/jest": "^24.0.13",
+    "jest": "24.8.0",
     "mkdirp": "0.5.1",
     "npm-run-all": "4.1.5",
-    "readme-assert": "5.0.6",
-    "rimraf": "2.6.3"
+    "readme-assert": "6.0.1",
+    "rimraf": "2.6.3",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^8.2.0",
+    "typescript": "^3.5.1"
   },
   "keywords": [
     "depth first search",
@@ -52,6 +44,7 @@
     "directed graphs"
   ],
   "files": [
-    "dist"
+    "dist/index.d.ts",
+    "dist/index.js"
   ]
 }

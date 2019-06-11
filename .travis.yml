@@ -1,7 +1,4 @@
-sudo: false
 language: node_js
 node_js:
-  - '10'
-  - '8'
-scripts:
-  - 'npm run lint'
+  - "10"
+  - "8"
