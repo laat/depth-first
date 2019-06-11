@@ -3302,10 +3302,10 @@ readable-stream@^2.0.6:
     string_decoder "~1.0.0"
     util-deprecate "~1.0.1"
 
-readme-assert@6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/readme-assert/-/readme-assert-6.0.1.tgz#648afc132eb202c955d1f7c230de49cc26ec2f6b"
-  integrity sha512-yCz/nuWZjBoiJxmSKHiQVCHvWdAYCwK/6I4MTF15nn9qIbsw52XYtRHFzIRUE8reYaPQrMXACB7fgPxkKBN/GA==
+readme-assert@6.0.2:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/readme-assert/-/readme-assert-6.0.2.tgz#1756dc21e93f0ce844485ed736fbc423cf9f2289"
+  integrity sha512-TeteOZcLy5Q87qjbEm44dUFkGEw47JC6uvugJaAtDPsYz+DKPIn974/TZw4knwy30ssjaYwJaH1f6GOFa88W2g==
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/plugin-syntax-typescript" "^7.3.3"
