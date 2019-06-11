@@ -5,6 +5,7 @@
     "moduleResolution": "node",
     "sourceMap": false,
     "declaration": true,
+    "strict": true,
     "stripInternal": true,
     "lib": ["es2016"],
     "outDir": "dist",

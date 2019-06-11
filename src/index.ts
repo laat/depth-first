@@ -8,9 +8,9 @@ export default function depthFirst<T>(
 ): Array<T> {
   const { reverse } = Object.assign({}, { reverse: false }, opts);
   edges = reverse ? edges.map(([from, to]) => [to, from]) : edges;
-  const result = [];
+  const result: Array<T> = [];
   const visited = new Map();
-  const dfs = v => {
+  const dfs = (v: T) => {
     result.push(v);
     visited.set(v, true);
     edges
