@@ -19,9 +19,6 @@
     "test:readme": "readme-assert -p --require ts-node/register --main ./src/index.ts",
     "test:js": "jest",
     "test": "run-s test:*",
-    "lint:eslint": "eslint src",
-    "lint:flow": "flow",
-    "lint": "run-s lint:*",
     "prepublish": "npm run build"
   },
   "devDependencies": {
