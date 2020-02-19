@@ -1,5 +1,5 @@
 export type Edge<T> = [T, T];
-export type Edges<T> = Array<Edge<T>>;
+export type Edges<T> = Edge<T>[];
 
 export default function depthFirst<T>(
   edges: Edges<T>,
