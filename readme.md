@@ -1,7 +1,5 @@
-# depth-first [![travis][travis-image]][travis-url] [![npm][npm-image]][npm-url]
+# depth-first [![npm][npm-image]][npm-url]
 
-[travis-image]: https://img.shields.io/travis/laat/depth-first.svg?branch=master
-[travis-url]: https://travis-ci.org/laat/depth-first
 [npm-image]: https://img.shields.io/npm/v/depth-first.svg?style=flat
 [npm-url]: https://npmjs.org/package/depth-first
 
