@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import dfs, { Edges } from ".";
 
 it("finds nodes DFS", async () => {
