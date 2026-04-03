@@ -7,16 +7,18 @@ export default function depthFirst<T>(
   opts: { reverse?: boolean } = {}
 ): Array<T> {
   const { reverse = false } = opts;
-  edges = reverse ? edges.map(([from, to]) => [to, from]) : edges;
   const outEdges = new Map<T, T[]>();
-  edges.forEach(([from, to]) => {
-    outEdges.get(from)?.push(to) ?? outEdges.set(from, [to]);
+  edges.forEach(([a, b]) => {
+    const from = reverse ? b : a;
+    const to = reverse ? a : b;
+    if (!outEdges.has(from)) outEdges.set(from, []);
+    outEdges.get(from)!.push(to);
   });
   const result: Array<T> = [];
-  const visited = new Map<T, boolean>();
+  const visited = new Set<T>();
   const dfs = (v: T) => {
     result.push(v);
-    visited.set(v, true);
+    visited.add(v);
     for (const to of outEdges.get(v) ?? []) {
       if (!visited.has(to)) {
         dfs(to);
