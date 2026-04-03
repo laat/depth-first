@@ -1,7 +1,7 @@
 {
   "name": "depth-first",
   "description": "Depth-first search for directed graphs",
-  "version": "4.0.1",
+  "version": "5.0.0",
   "type": "module",
   "exports": "./index.js",
   "types": "index.d.ts",
