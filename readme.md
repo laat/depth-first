@@ -17,7 +17,7 @@ We want to traverse the following graph.
 
 ![demo graph](https://cdn.rawgit.com/laat/depth-first/8cb655fe/graph.svg)
 
-```js test
+```js test:all
 import dfs from "depth-first";
 
 // First, we define our edges.
@@ -40,7 +40,7 @@ dfs(edges, "put on your shirt");
 
 ### Reverse edges
 
-```js test
+```js test:all
 // List the vertices that can be reached starting at 'put on your jacket' when
 // the edges are reversed
 dfs(edges, "put on your jacket", { reverse: true });
