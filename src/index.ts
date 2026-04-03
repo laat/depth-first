@@ -8,20 +8,25 @@ export default function depthFirst<T>(
 ): Array<T> {
   const { reverse = false } = opts;
   const outEdges = new Map<T, T[]>();
-  edges.forEach(([a, b]) => {
+  for (const [a, b] of edges) {
     const from = reverse ? b : a;
     const to = reverse ? a : b;
-    if (!outEdges.has(from)) outEdges.set(from, []);
-    outEdges.get(from)!.push(to);
-  });
+    let list = outEdges.get(from);
+    if (list === undefined) {
+      list = [];
+      outEdges.set(from, list);
+    }
+    list.push(to);
+  }
   const result: Array<T> = [];
   const visited = new Set<T>();
   const dfs = (v: T) => {
     result.push(v);
     visited.add(v);
-    for (const to of outEdges.get(v) ?? []) {
-      if (!visited.has(to)) {
-        dfs(to);
+    const neighbors = outEdges.get(v);
+    if (neighbors !== undefined) {
+      for (const to of neighbors) {
+        if (!visited.has(to)) dfs(to);
       }
     }
   };
