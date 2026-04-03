@@ -1,13 +1,6 @@
-export type Edge<T> = [T, T];
-export type Edges<T> = Edge<T>[];
-
-export default function depthFirst<T>(
-  edges: Edges<T>,
-  node: T,
-  opts: { reverse?: boolean } = {}
-): Array<T> {
+export default function depthFirst(edges, node, opts = {}) {
   const { reverse = false } = opts;
-  const outEdges = new Map<T, T[]>();
+  const outEdges = new Map();
   for (const [a, b] of edges) {
     const from = reverse ? b : a;
     const to = reverse ? a : b;
@@ -18,9 +11,9 @@ export default function depthFirst<T>(
     }
     list.push(to);
   }
-  const result: Array<T> = [];
-  const visited = new Set<T>();
-  const dfs = (v: T) => {
+  const result = [];
+  const visited = new Set();
+  const dfs = (v) => {
     result.push(v);
     visited.add(v);
     const neighbors = outEdges.get(v);
