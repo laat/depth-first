@@ -2,14 +2,15 @@
   "compilerOptions": {
     "target": "es2018",
     "module": "commonjs",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "sourceMap": false,
     "declaration": true,
     "strict": true,
     "stripInternal": true,
     "lib": ["es2018"],
     "outDir": "dist",
-    "rootDir": "src"
+    "rootDir": "src",
+    "types": ["jest", "node"]
   },
   "include": ["src"]
 }
