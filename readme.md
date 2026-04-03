@@ -3,12 +3,12 @@
 [npm-image]: https://img.shields.io/npm/v/depth-first.svg?style=flat
 [npm-url]: https://npmjs.org/package/depth-first
 
-> Depth first search directed graphs
+Depth-first search for directed graphs.
 
 ## Install
 
 ```
-$ npm install --save depth-first
+$ npm install depth-first
 ```
 
 ## Usage
