@@ -1,155 +1,156 @@
-import { expect, it } from "vitest";
-import dfs, { Edges } from ".";
+import { it } from "node:test";
+import assert from "node:assert/strict";
+import dfs from "./index.js";
 
 it("finds nodes DFS", async () => {
-  const edges: Edges<string> = [
+  const edges = [
     ["put on your shoes", "tie your shoes"],
     ["put on your shirt", "put on your jacket"],
     ["put on your shorts", "put on your jacket"],
     ["put on your shorts", "put on your shoes"]
   ];
-  expect(dfs(edges, "put on your shorts")).toEqual([
+  assert.deepStrictEqual(dfs(edges, "put on your shorts"), [
     "put on your shorts",
     "put on your jacket",
     "put on your shoes",
     "tie your shoes"
   ]);
-  expect(dfs(edges, "put on your shirt")).toEqual([
+  assert.deepStrictEqual(dfs(edges, "put on your shirt"), [
     "put on your shirt",
     "put on your jacket"
   ]);
 });
 
 it("finds nodes DFS reverse", async () => {
-  const edges: Edges<string> = [
+  const edges = [
     ["put on your shoes", "tie your shoes"],
     ["put on your shirt", "put on your jacket"],
     ["put on your shorts", "put on your jacket"],
     ["put on your shorts", "put on your shoes"]
   ];
-  expect(dfs(edges, "put on your jacket", { reverse: true })).toEqual([
+  assert.deepStrictEqual(dfs(edges, "put on your jacket", { reverse: true }), [
     "put on your jacket",
     "put on your shirt",
     "put on your shorts"
   ]);
-  expect(dfs(edges, "put on your shoes", { reverse: true })).toEqual([
+  assert.deepStrictEqual(dfs(edges, "put on your shoes", { reverse: true }), [
     "put on your shoes",
     "put on your shorts"
   ]);
 });
 
 it("DFS handles cycles", async () => {
-  const edges: Edges<string> = [
+  const edges = [
     ["put on your shoes", "tie your shoes"],
     ["tie your shoes", "put on your shoes"]
   ];
-  expect(dfs(edges, "put on your shoes")).toEqual([
+  assert.deepStrictEqual(dfs(edges, "put on your shoes"), [
     "put on your shoes",
     "tie your shoes"
   ]);
 });
 
 it("supports nodes without edges", async () => {
-  const edges: Edges<string> = [
+  const edges = [
     ["put on your shoes", "tie your shoes"],
     ["put on your shirt", "put on your jacket"],
     ["put on your shorts", "put on your jacket"],
     ["put on your shorts", "put on your shoes"]
   ];
-  expect(dfs(edges, "listen to audiobook", { reverse: true })).toEqual([
+  assert.deepStrictEqual(dfs(edges, "listen to audiobook", { reverse: true }), [
     "listen to audiobook"
   ]);
 });
 
 it("handles empty edges", () => {
-  expect(dfs([], "a")).toEqual(["a"]);
+  assert.deepStrictEqual(dfs([], "a"), ["a"]);
 });
 
 it("handles self-loops", () => {
-  const edges: Edges<string> = [["a", "a"]];
-  expect(dfs(edges, "a")).toEqual(["a"]);
+  const edges = [["a", "a"]];
+  assert.deepStrictEqual(dfs(edges, "a"), ["a"]);
 });
 
 it("visits shared nodes only once (diamond graph)", () => {
-  const edges: Edges<number> = [
+  const edges = [
     [1, 2],
     [1, 3],
     [2, 4],
     [3, 4]
   ];
-  expect(dfs(edges, 1)).toEqual([1, 2, 4, 3]);
+  assert.deepStrictEqual(dfs(edges, 1), [1, 2, 4, 3]);
 });
 
 it("works with reverse on diamond graph", () => {
-  const edges: Edges<number> = [
+  const edges = [
     [1, 2],
     [1, 3],
     [2, 4],
     [3, 4]
   ];
-  expect(dfs(edges, 4, { reverse: true })).toEqual([4, 2, 1, 3]);
+  assert.deepStrictEqual(dfs(edges, 4, { reverse: true }), [4, 2, 1, 3]);
 });
 
 it("traverses a linear chain in order", () => {
-  const edges: Edges<string> = [
+  const edges = [
     ["a", "b"],
     ["b", "c"],
     ["c", "d"]
   ];
-  expect(dfs(edges, "a")).toEqual(["a", "b", "c", "d"]);
+  assert.deepStrictEqual(dfs(edges, "a"), ["a", "b", "c", "d"]);
 });
 
 it("only reaches the connected component", () => {
-  const edges: Edges<number> = [
+  const edges = [
     [1, 2],
     [2, 3],
     [10, 11],
     [11, 12]
   ];
-  expect(dfs(edges, 1)).toEqual([1, 2, 3]);
-  expect(dfs(edges, 10)).toEqual([10, 11, 12]);
+  assert.deepStrictEqual(dfs(edges, 1), [1, 2, 3]);
+  assert.deepStrictEqual(dfs(edges, 10), [10, 11, 12]);
 });
 
 it("handles reverse with cycles", () => {
-  const edges: Edges<string> = [
+  const edges = [
     ["a", "b"],
     ["b", "c"],
     ["c", "a"]
   ];
-  expect(dfs(edges, "a", { reverse: true })).toEqual(["a", "c", "b"]);
+  assert.deepStrictEqual(dfs(edges, "a", { reverse: true }), ["a", "c", "b"]);
 });
 
 it("leaf node has no outgoing edges in forward mode", () => {
-  const edges: Edges<string> = [
+  const edges = [
     ["a", "b"],
     ["b", "c"]
   ];
-  expect(dfs(edges, "c")).toEqual(["c"]);
+  assert.deepStrictEqual(dfs(edges, "c"), ["c"]);
 });
 
 it("root node has no incoming edges in reverse mode", () => {
-  const edges: Edges<string> = [
+  const edges = [
     ["a", "b"],
     ["b", "c"]
   ];
-  expect(dfs(edges, "a", { reverse: true })).toEqual(["a"]);
+  assert.deepStrictEqual(dfs(edges, "a", { reverse: true }), ["a"]);
 });
 
 it("explicit reverse: false behaves like default", () => {
-  const edges: Edges<number> = [
+  const edges = [
     [1, 2],
     [1, 3]
   ];
-  expect(dfs(edges, 1, { reverse: false })).toEqual(dfs(edges, 1));
+  assert.deepStrictEqual(dfs(edges, 1, { reverse: false }), dfs(edges, 1));
 });
 
 it("respects edge insertion order for traversal", () => {
-  const edges: Edges<string> = [
+  const edges = [
     ["a", "c"],
     ["a", "b"]
   ];
   // c appears before b in the edge list, so DFS visits c first
-  expect(dfs(edges, "a")).toEqual(["a", "c", "b"]);
+  assert.deepStrictEqual(dfs(edges, "a"), ["a", "c", "b"]);
 });
 
 it("handles a larger tree", () => {
@@ -158,14 +159,14 @@ it("handles a larger tree", () => {
   //     2   3
   //    / \   \
   //   4   5   6
-  const edges: Edges<number> = [
+  const edges = [
     [1, 2],
     [1, 3],
     [2, 4],
     [2, 5],
     [3, 6]
   ];
-  expect(dfs(edges, 1)).toEqual([1, 2, 4, 5, 3, 6]);
-  expect(dfs(edges, 2)).toEqual([2, 4, 5]);
-  expect(dfs(edges, 6, { reverse: true })).toEqual([6, 3, 1]);
+  assert.deepStrictEqual(dfs(edges, 1), [1, 2, 4, 5, 3, 6]);
+  assert.deepStrictEqual(dfs(edges, 2), [2, 4, 5]);
+  assert.deepStrictEqual(dfs(edges, 6, { reverse: true }), [6, 3, 1]);
 });
