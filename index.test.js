@@ -7,17 +7,17 @@ it("finds nodes DFS", async () => {
     ["put on your shoes", "tie your shoes"],
     ["put on your shirt", "put on your jacket"],
     ["put on your shorts", "put on your jacket"],
-    ["put on your shorts", "put on your shoes"]
+    ["put on your shorts", "put on your shoes"],
   ];
   assert.deepStrictEqual(dfs(edges, "put on your shorts"), [
     "put on your shorts",
     "put on your jacket",
     "put on your shoes",
-    "tie your shoes"
+    "tie your shoes",
   ]);
   assert.deepStrictEqual(dfs(edges, "put on your shirt"), [
     "put on your shirt",
-    "put on your jacket"
+    "put on your jacket",
   ]);
 });
 
@@ -26,27 +26,27 @@ it("finds nodes DFS reverse", async () => {
     ["put on your shoes", "tie your shoes"],
     ["put on your shirt", "put on your jacket"],
     ["put on your shorts", "put on your jacket"],
-    ["put on your shorts", "put on your shoes"]
+    ["put on your shorts", "put on your shoes"],
   ];
   assert.deepStrictEqual(dfs(edges, "put on your jacket", { reverse: true }), [
     "put on your jacket",
     "put on your shirt",
-    "put on your shorts"
+    "put on your shorts",
   ]);
   assert.deepStrictEqual(dfs(edges, "put on your shoes", { reverse: true }), [
     "put on your shoes",
-    "put on your shorts"
+    "put on your shorts",
   ]);
 });
 
 it("DFS handles cycles", async () => {
   const edges = [
     ["put on your shoes", "tie your shoes"],
-    ["tie your shoes", "put on your shoes"]
+    ["tie your shoes", "put on your shoes"],
   ];
   assert.deepStrictEqual(dfs(edges, "put on your shoes"), [
     "put on your shoes",
-    "tie your shoes"
+    "tie your shoes",
   ]);
 });
 
@@ -55,10 +55,10 @@ it("supports nodes without edges", async () => {
     ["put on your shoes", "tie your shoes"],
     ["put on your shirt", "put on your jacket"],
     ["put on your shorts", "put on your jacket"],
-    ["put on your shorts", "put on your shoes"]
+    ["put on your shorts", "put on your shoes"],
   ];
   assert.deepStrictEqual(dfs(edges, "listen to audiobook", { reverse: true }), [
-    "listen to audiobook"
+    "listen to audiobook",
   ]);
 });
 
@@ -76,7 +76,7 @@ it("visits shared nodes only once (diamond graph)", () => {
     [1, 2],
     [1, 3],
     [2, 4],
-    [3, 4]
+    [3, 4],
   ];
   assert.deepStrictEqual(dfs(edges, 1), [1, 2, 4, 3]);
 });
@@ -86,7 +86,7 @@ it("works with reverse on diamond graph", () => {
     [1, 2],
     [1, 3],
     [2, 4],
-    [3, 4]
+    [3, 4],
   ];
   assert.deepStrictEqual(dfs(edges, 4, { reverse: true }), [4, 2, 1, 3]);
 });
@@ -95,7 +95,7 @@ it("traverses a linear chain in order", () => {
   const edges = [
     ["a", "b"],
     ["b", "c"],
-    ["c", "d"]
+    ["c", "d"],
   ];
   assert.deepStrictEqual(dfs(edges, "a"), ["a", "b", "c", "d"]);
 });
@@ -105,7 +105,7 @@ it("only reaches the connected component", () => {
     [1, 2],
     [2, 3],
     [10, 11],
-    [11, 12]
+    [11, 12],
   ];
   assert.deepStrictEqual(dfs(edges, 1), [1, 2, 3]);
   assert.deepStrictEqual(dfs(edges, 10), [10, 11, 12]);
@@ -115,7 +115,7 @@ it("handles reverse with cycles", () => {
   const edges = [
     ["a", "b"],
     ["b", "c"],
-    ["c", "a"]
+    ["c", "a"],
   ];
   assert.deepStrictEqual(dfs(edges, "a", { reverse: true }), ["a", "c", "b"]);
 });
@@ -123,7 +123,7 @@ it("handles reverse with cycles", () => {
 it("leaf node has no outgoing edges in forward mode", () => {
   const edges = [
     ["a", "b"],
-    ["b", "c"]
+    ["b", "c"],
   ];
   assert.deepStrictEqual(dfs(edges, "c"), ["c"]);
 });
@@ -131,7 +131,7 @@ it("leaf node has no outgoing edges in forward mode", () => {
 it("root node has no incoming edges in reverse mode", () => {
   const edges = [
     ["a", "b"],
-    ["b", "c"]
+    ["b", "c"],
   ];
   assert.deepStrictEqual(dfs(edges, "a", { reverse: true }), ["a"]);
 });
@@ -139,7 +139,7 @@ it("root node has no incoming edges in reverse mode", () => {
 it("explicit reverse: false behaves like default", () => {
   const edges = [
     [1, 2],
-    [1, 3]
+    [1, 3],
   ];
   assert.deepStrictEqual(dfs(edges, 1, { reverse: false }), dfs(edges, 1));
 });
@@ -147,7 +147,7 @@ it("explicit reverse: false behaves like default", () => {
 it("respects edge insertion order for traversal", () => {
   const edges = [
     ["a", "c"],
-    ["a", "b"]
+    ["a", "b"],
   ];
   // c appears before b in the edge list, so DFS visits c first
   assert.deepStrictEqual(dfs(edges, "a"), ["a", "c", "b"]);
@@ -164,7 +164,7 @@ it("handles a larger tree", () => {
     [1, 3],
     [2, 4],
     [2, 5],
-    [3, 6]
+    [3, 6],
   ];
   assert.deepStrictEqual(dfs(edges, 1), [1, 2, 4, 5, 3, 6]);
   assert.deepStrictEqual(dfs(edges, 2), [2, 4, 5]);
