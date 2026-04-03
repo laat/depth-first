@@ -17,8 +17,9 @@
     "prebuild": "rimraf dist",
     "build": "tsc",
     "test": "jest",
-    "prepublish": "npm run build"
+    "prepublishOnly": "pnpm run build"
   },
+  "packageManager": "pnpm@10.11.0",
   "devDependencies": {
     "@types/jest": "30.0.0",
     "@types/node": "24.12.2",
