@@ -32,6 +32,6 @@
     "index.d.ts"
   ],
   "devDependencies": {
-    "readme-assert": "8.0.0"
+    "readme-assert": "10.1.0"
   }
 }
