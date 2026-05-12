@@ -18,7 +18,7 @@
   "scripts": {
     "test": "node --test index.test.js && readme-assert"
   },
-  "packageManager": "pnpm@11.1.0",
+  "packageManager": "pnpm@11.1.1",
   "keywords": [
     "depth first search",
     "dfs",
