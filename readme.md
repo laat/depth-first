@@ -15,7 +15,7 @@ $ npm install depth-first
 
 We want to traverse the following graph.
 
-![demo graph](https://cdn.rawgit.com/laat/depth-first/8cb655fe/graph.svg)
+![demo graph](./graph.svg)
 
 ```js test:all
 import dfs from "depth-first";
